@@ -53,7 +53,17 @@ export class CustomerDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if(!navigator.geolocation) {
+      console.log('location is not supported.')
+    }
 
+    // lat: 3.8567936
+    // long: 11.5212288
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(
+        `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+      )
+    })
   }
 
   ngOnDestroy(): void {

@@ -1,8 +1,8 @@
 <div>
   <ul>
-    <li>pickup_time: {{deliveryItem.pickup_time}}</li>
-    <li>start_time: {{deliveryItem.start_time}}</li>
-    <li>end_time: {{deliveryItem.end_time}}</li>
-    <li>status: {{deliveryItem.status}}</li>
+    <li >pickup_time: <span style="font-weight: lighter;">{{formatToDate(deliveryItem.pickup_time)}}</span></li>
+    <li>start_time: <span style="font-weight: lighter;">{{formatToDate(deliveryItem.start_time)}}</span></li>
+    <li>end_time: <span style="font-weight: lighter;">{{formatToDate(deliveryItem.end_time)}}</span></li>
+    <li>status: <span style="font-weight: lighter;">{{deliveryItem.status}}</span></li>
   </ul>
 </div>

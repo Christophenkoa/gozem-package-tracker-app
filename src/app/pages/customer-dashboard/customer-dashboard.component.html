@@ -8,7 +8,7 @@
         <app-package-item [packageItem]="package"></app-package-item>
       </div>
       <ng-template #empty_package>
-        <div class="">No package found</div>
+        <div class="mt-2 mb-2">No package found</div>
       </ng-template>
 
       <div *ngIf="delivery;else empty_delivery">
@@ -16,16 +16,12 @@
         <app-delivery-item [deliveryItem]="delivery"></app-delivery-item>
       </div>
       <ng-template #empty_delivery>
-        <div class="">No delivery found</div>
+        <div class="mt-2 mb-2">No delivery found</div>
       </ng-template>
 
     </div>
-    <div class="mapSection">MAP</div>
-    <div class="statusButtonsSection">
-      <button class="pickedUpBtn">picked up</button>
-      <button class="inTransitBtn">In-Transit</button
-      ><button class="deliveredBtn">Deliverd</button
-      ><button class="failedBtn">Failed</button>
+    <div class="mapSection">
+      <app-custom-map></app-custom-map>
     </div>
   </div>
 </form>

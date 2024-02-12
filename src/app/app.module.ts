@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PackageItemComponent } from './components/package-item/package-item.component';
 import { DeliveryItemComponent } from './components/delivery-item/delivery-item.component';
 import { DeliverySearchComponent } from './components/delivery-search/delivery-search.component';
+import { CustomMapComponent } from './components/custom-map/custom-map.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DeliverySearchComponent } from './components/delivery-search/delivery-s
     CustomButtonComponent,
     PackageItemComponent,
     DeliveryItemComponent,
-    DeliverySearchComponent
+    DeliverySearchComponent,
+    CustomMapComponent
   ],
   imports: [
     BrowserModule,
