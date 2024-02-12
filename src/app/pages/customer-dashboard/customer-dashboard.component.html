@@ -1,10 +1,31 @@
-<div>
-  <div>
-    <h3>Package Details</h3>
-    <app-package-item></app-package-item>
+<form>
+  <app-delivery-search (onBtnSearch)="getDeliveryId($event)"></app-delivery-search>
+  <div class="flexContainer">
+    <div class="deliveryDetailsSection">
+
+      <div *ngIf="package;else empty_package">
+        <p>Package Details</p>
+        <app-package-item [packageItem]="package"></app-package-item>
+      </div>
+      <ng-template #empty_package>
+        <div class="">No package found</div>
+      </ng-template>
+
+      <div *ngIf="delivery;else empty_delivery">
+        <p>Delivery Details</p>
+        <app-delivery-item [deliveryItem]="delivery"></app-delivery-item>
+      </div>
+      <ng-template #empty_delivery>
+        <div class="">No delivery found</div>
+      </ng-template>
+
+    </div>
+    <div class="mapSection">MAP</div>
+    <div class="statusButtonsSection">
+      <button class="pickedUpBtn">picked up</button>
+      <button class="inTransitBtn">In-Transit</button
+      ><button class="deliveredBtn">Deliverd</button
+      ><button class="failedBtn">Failed</button>
+    </div>
   </div>
-  <div>
-    <h3>Delivery Details</h3>
-    <app-delivery-item></app-delivery-item>
-  </div>
-</div>
+</form>

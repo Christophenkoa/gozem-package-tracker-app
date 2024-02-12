@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PackageItemComponent } from './components/package-item/package-item.component';
 import { DeliveryItemComponent } from './components/delivery-item/delivery-item.component';
+import { DeliverySearchComponent } from './components/delivery-search/delivery-search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DeliveryItemComponent } from './components/delivery-item/delivery-item.
     PageNotFoundComponent,
     CustomButtonComponent,
     PackageItemComponent,
-    DeliveryItemComponent
+    DeliveryItemComponent,
+    DeliverySearchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Delivery } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-delivery-item',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./delivery-item.component.css']
 })
 export class DeliveryItemComponent {
-
+  @Input() deliveryItem!: Delivery;
 }

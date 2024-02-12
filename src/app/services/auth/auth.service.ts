@@ -1,21 +1,21 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginData } from 'src/app/interfaces';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpService: HttpService<LoginData>) { }
 
   login(userEmail: string, userPassword: string) {
-    return this.http.post<LoginData>(
-      'http://localhost:8000/api/auth/login',
+    return this.httpService.postWithHeader(
       {
         email: userEmail,
         password: userPassword
-      }
+      },
+      'auth/login',
     )
   }
 }

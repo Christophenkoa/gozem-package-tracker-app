@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Package } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-package-item',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./package-item.component.css']
 })
 export class PackageItemComponent {
-
+  @Input() packageItem!: Package
 }

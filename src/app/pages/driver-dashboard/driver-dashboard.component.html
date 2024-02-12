@@ -1,10 +1,22 @@
-<div>
-  <div>
-    <h3>Package Details</h3>
-    <app-package-item></app-package-item>
+<form>
+  <app-delivery-search></app-delivery-search>
+  <div class="flexContainer">
+    <div class="deliveryDetailsSection">
+      <div>
+        <p>Package Details</p>
+        <app-package-item></app-package-item>
+      </div>
+      <div>
+        <p>Delivery Details</p>
+        <app-delivery-item></app-delivery-item>
+      </div>
+    </div>
+    <div class="mapSection">MAP</div>
+    <div class="statusButtonsSection">
+      <button class="pickedUpBtn">picked up</button>
+      <button class="inTransitBtn">In-Transit</button
+      ><button class="deliveredBtn">Deliverd</button
+      ><button class="failedBtn">Failed</button>
+    </div>
   </div>
-  <div>
-    <h3>Delivery Details</h3>
-    <app-delivery-item></app-delivery-item>
-  </div>
-</div>
+</form>

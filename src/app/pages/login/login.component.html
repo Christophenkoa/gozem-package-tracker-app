@@ -1,30 +1,48 @@
-<div class="container">
-  <h1>Login</h1>
-  <form (ngSubmit)="loginUser()">
-
-    <div class="form-group mb-2">
-      <label for="email">Email address</label>
-      <input
-            name="email"
-            type="text"
-            class="form-control"
-            placeholder="Enter email"
-            required
-            [(ngModel)]="email">
+<section class="sign-in-page">
+  <div class="container p-0">
+    <div class="row no-gutters height-self-center">
+      <div class="col-sm-12 align-self-center">
+        <div class="row m-0 justify-content-center">
+          <div class="col-md-6 col-12 bg-white sign-in-page-data">
+            <span class="float-right" style="color: #004481">Gozem Company</span>
+            <div class="sign-in-from mt-5">
+              <div class="text-center">
+                <a href="#" class="header-logo">
+                  <img src="../../assets/images/gozem_logo.jpg" class="img-fluid" style="width: 150px;" alt="">
+                </a>
+              </div>
+              <div class="mt-4">
+                <div class="form-group mb-2">
+                  <label for="email" style="color:#004481">Email address</label>
+                  <input
+                        name="email"
+                        id="email"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter email"
+                        required
+                        [(ngModel)]="email">
+                </div>
+                <div class="form-group mb-2">
+                  <label for="password" style="color:#004481">Password</label>
+                  <input
+                        class="form-control mb-0"
+                        id="password"
+                        name="password"
+                        type="password"
+                        required
+                        placeholder="Enter Password"
+                        [(ngModel)]="password">
+                </div>
+                <div class="sign-info text-center mt-2">
+                  <button type="submit" class="btn btn-primary d-block w-100 mb-2 p-3" (click)="loginUser()">
+                    Login <i class="las la-long-arrow-alt-right"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="form-group mb-2">
-      <label for="password">Password</label>
-      <input
-            class="form-control"
-            name="password"
-            type="password"
-            required
-            placeholder="Enter Password"
-            [(ngModel)]="password">
-    </div>
-
-    <button type="submit" class="btn btn-primary mb-2">Login</button>
-
-  </form>
-</div>
+  </div>
+</section>
