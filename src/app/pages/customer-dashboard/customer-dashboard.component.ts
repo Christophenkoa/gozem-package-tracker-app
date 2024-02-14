@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Delivery, Package } from 'src/app/interfaces';
 import { DeliveryService } from 'src/app/services/delivery/delivery.service';
 import { PackageService } from 'src/app/services/package/package.service';
+import { SocketService } from 'src/app/services/socket/socket.service';
 
 @Component({
   selector: 'app-customer-dashboard',
@@ -12,31 +13,34 @@ import { PackageService } from 'src/app/services/package/package.service';
 export class CustomerDashboardComponent implements OnInit, OnDestroy {
   delivery!: Delivery;
   package!: Package;
-  deliveryId: string = '';
-  deliveryPackageId: string = '';
+  packageId: string = '';
+  activeDeliveryId: string = '';
+  placeholder = 'Enter Package ID';
 
   private deliverySubscription: Subscription = new Subscription;
   private packageSubscription: Subscription = new Subscription;
 
   constructor(
     private deliveryService: DeliveryService,
-    private packageService: PackageService) {
+    private packageService: PackageService,
+    private socketService: SocketService) {
   }
 
-  public getDeliveryId(id: string):void {
-    this.deliveryId = id;
-    console.log('Emitted delivery id: ', this.deliveryId);
+  public getPackageId(id: string):void {
+    this.packageId = id;
+    console.log('Emitted package id: ', this.packageId);
 
     // '65c83682e680665dd9ad7f9a'
-    this.deliverySubscription = this.deliveryService.getDeliveryById(this.deliveryId).subscribe({
+    this.packageSubscription = this.packageService.getPackageById(this.packageId).subscribe({
       next: (data) => {
-        this.delivery = data.data;
-        this.deliveryPackageId = this.delivery?.package_id ?? '';
+        this.package = data.data;
+        console.log(this.package)
+        this.activeDeliveryId = this.package?.active_delivery_id ?? '';
 
-        //65c83682e680665dd9ad7f9a
-        this.packageSubscription = this.packageService.getPackageById(this.deliveryPackageId).subscribe({
+        // '65c83682e680665dd9ad7f9a'
+        this.deliverySubscription = this.deliveryService.getDeliveryById(this.activeDeliveryId).subscribe({
           next: (data) => {
-            this.package = data.data; console.log(this.package)
+            this.delivery = data.data; console.log(this.delivery)
           },
           error: (error) => {
             console.log(error);
@@ -52,19 +56,7 @@ export class CustomerDashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
-    if(!navigator.geolocation) {
-      console.log('location is not supported.')
-    }
-
-    // lat: 3.8567936
-    // long: 11.5212288
-    navigator.geolocation.getCurrentPosition((position) => {
-      console.log(
-        `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-      )
-    })
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.packageSubscription.unsubscribe();

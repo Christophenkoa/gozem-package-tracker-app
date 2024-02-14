@@ -15,9 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PackageItemComponent } from './components/package-item/package-item.component';
 import { DeliveryItemComponent } from './components/delivery-item/delivery-item.component';
-import { DeliverySearchComponent } from './components/delivery-search/delivery-search.component';
 import { CustomMapComponent } from './components/custom-map/custom-map.component';
 import { SocketService } from './services/socket/socket.service';
+import { ItemSearchBarComponent } from './components/item-search-bar/item-search-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { SocketService } from './services/socket/socket.service';
     CustomButtonComponent,
     PackageItemComponent,
     DeliveryItemComponent,
-    DeliverySearchComponent,
-    CustomMapComponent
+    CustomMapComponent,
+    ItemSearchBarComponent
   ],
   imports: [
     BrowserModule,

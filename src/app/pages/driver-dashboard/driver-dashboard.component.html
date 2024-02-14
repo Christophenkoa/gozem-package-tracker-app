@@ -1,5 +1,8 @@
 <form>
-  <app-delivery-search (onBtnSearch)="getDeliveryId($event)"></app-delivery-search>
+  <app-item-search-bar
+   (onBtnSearch)="getDeliveryId($event)"
+   [placeholder]="placeholder"
+   ></app-item-search-bar>
   <div class="flexContainer">
     <div class="deliveryDetailsSection">
 

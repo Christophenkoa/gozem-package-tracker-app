@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeliverySearchComponent } from './delivery-search.component';
+import { ItemSearchBarComponent } from './item-search-bar.component';
 
-describe('DeliverySearchComponent', () => {
-  let component: DeliverySearchComponent;
-  let fixture: ComponentFixture<DeliverySearchComponent>;
+describe('ItemSearchBarComponent', () => {
+  let component: ItemSearchBarComponent;
+  let fixture: ComponentFixture<ItemSearchBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeliverySearchComponent ]
+      declarations: [ ItemSearchBarComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeliverySearchComponent);
+    fixture = TestBed.createComponent(ItemSearchBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

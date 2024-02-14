@@ -17,6 +17,8 @@ export class DriverDashboardComponent {
   deliveryId: string = '';
   deliveryPackageId: string = '';
 
+  placeholder = 'Enter Delivery ID';
+
   latitude!: number;
   longitude!: number;
 
@@ -97,7 +99,13 @@ export class DriverDashboardComponent {
             }
           });
         }
-      })
+      }, (error) => {
+        console.log(error);
+      }, {
+        enableHighAccuracy: true,
+        timeout: 2000,
+        maximumAge: 0
+      });
     });
   }
 
@@ -140,7 +148,7 @@ export class DriverDashboardComponent {
   //     console.log(error)
   //   },
   //   {
-  //     enableHighAccuracy: false,
+  //     enableHighAccuracy: true,
   //     timeout: 2000,
   //     maximumAge: 0
   //   });

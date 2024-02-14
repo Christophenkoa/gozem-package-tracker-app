@@ -33,17 +33,18 @@ export class CustomMapComponent implements OnInit {
       ],
       13
     );
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: this.maxZom,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(this.map);
   }
 
   getDeliveryUpdate() {
+    console.log('custom map')
     this.socketService.listenToServer(Connection.delivery_updated)
       .subscribe({
         next: (value) => {
-          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: this.maxZom,
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          }).addTo(this.map);
-
           console.log("package item map")
           console.log(this.packageItem)
 
@@ -53,8 +54,6 @@ export class CustomMapComponent implements OnInit {
           ])
           .bindPopup("driver location")
           .addTo(this.map);
-
-
 
           new L.marker([
             this.packageItem?.from_location?.lat,
