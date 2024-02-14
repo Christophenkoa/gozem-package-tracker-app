@@ -36,13 +36,11 @@ export class DriverDashboardComponent {
     this.deliveryId = id;
     console.log('Emitted delivery id: ', this.deliveryId);
 
-    // '65c83682e680665dd9ad7f9a'
     this.deliverySubscription = this.deliveryService.getDeliveryById(this.deliveryId).subscribe({
       next: (data) => {
         this.delivery = data.data;
         this.deliveryPackageId = this.delivery?.package_id ?? '';
 
-        //65c83682e680665dd9ad7f9a
         this.packageSubscription = this.packageService.getPackageById(this.deliveryPackageId).subscribe({
           next: (data) => {
             this.package = data.data;
@@ -75,7 +73,6 @@ export class DriverDashboardComponent {
     //emit value in sequence every 2 second
     const source = interval(2000);
     this.subscription = source.subscribe(() => {
-      console.log('hello')
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
@@ -83,7 +80,6 @@ export class DriverDashboardComponent {
         console.log(position)
 
         if(this.delivery) {
-          console.log(this.delivery.status)
 
           if(this.delivery.status === DeliveryStatus.failed
             || this.delivery.status === DeliveryStatus.delivered) {

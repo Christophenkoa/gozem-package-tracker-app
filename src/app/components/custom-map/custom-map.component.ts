@@ -41,13 +41,9 @@ export class CustomMapComponent implements OnInit {
   }
 
   getDeliveryUpdate() {
-    console.log('custom map')
     this.socketService.listenToServer(Connection.delivery_updated)
       .subscribe({
         next: (value) => {
-          console.log("package item map")
-          console.log(this.packageItem)
-
           new L.marker([
             value.delivery_object.location.lat,
             value.delivery_object.location.lng
@@ -68,8 +64,6 @@ export class CustomMapComponent implements OnInit {
           ])
           .bindPopup("destination location")
           .addTo(this.map);
-
-          console.log(value.delivery_object);
         }
       })
   }

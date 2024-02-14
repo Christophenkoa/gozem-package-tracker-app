@@ -30,17 +30,14 @@ export class CustomerDashboardComponent implements OnInit, OnDestroy {
     this.packageId = id;
     console.log('Emitted package id: ', this.packageId);
 
-    // '65c83682e680665dd9ad7f9a'
     this.packageSubscription = this.packageService.getPackageById(this.packageId).subscribe({
       next: (data) => {
         this.package = data.data;
-        console.log(this.package)
         this.activeDeliveryId = this.package?.active_delivery_id ?? '';
 
-        // '65c83682e680665dd9ad7f9a'
         this.deliverySubscription = this.deliveryService.getDeliveryById(this.activeDeliveryId).subscribe({
           next: (data) => {
-            this.delivery = data.data; console.log(this.delivery)
+            this.delivery = data.data;
           },
           error: (error) => {
             console.log(error);
