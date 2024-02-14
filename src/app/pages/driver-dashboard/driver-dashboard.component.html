@@ -21,7 +21,9 @@
 
     </div>
     <div class="mapSection">
-      <app-custom-map></app-custom-map>
+      <ng-container *ngIf="package != undefined">
+        <app-custom-map [packageItem]="package"></app-custom-map>
+      </ng-container>
     </div>
     <div class="statusButtonsSection">
       <button class="pickedUpBtn">picked up</button>

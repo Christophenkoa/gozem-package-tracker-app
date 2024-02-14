@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Connection } from 'src/app/interfaces';
+import PackageType from 'src/app/interfaces/Package';
+import { SocketService } from 'src/app/services/socket/socket.service';
 
 declare const L: any;
 
@@ -8,36 +11,67 @@ declare const L: any;
   styleUrls: ['./custom-map.component.css']
 })
 export class CustomMapComponent implements OnInit {
+  @Input() packageItem!: PackageType;
+
+  defaultMapZoneCoords = {
+    lat: 4.0534016,
+    lng: 9.7288192
+  }
+
+  maxZom = 22;
+  map!: any;
+
+  constructor(private socketService: SocketService) {}
 
   ngOnInit(): void {
-    let map = L.map('map').setView(
+    this.getDeliveryUpdate()
+
+    this.map = L.map('map').setView(
       [
-        3.89425221216556,
-        11.545900842404988
+        this.defaultMapZoneCoords.lat,
+        this.defaultMapZoneCoords.lng
       ],
       13
     );
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 22,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
+  }
 
-    new L.marker([3.8567936, 11.5212288])
-      .bindPopup("driver location")
-      .addTo(map);
+  getDeliveryUpdate() {
+    this.socketService.listenToServer(Connection.delivery_updated)
+      .subscribe({
+        next: (value) => {
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: this.maxZom,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          }).addTo(this.map);
 
-    new L.marker([3.895879228322214, 11.570362585929654])
-      .bindPopup("source location")
-      .addTo(map);
+          console.log("package item map")
+          console.log(this.packageItem)
 
-    new L.marker([3.8614543228351934, 11.524529003325544])
-      .bindPopup("destination location")
-      .addTo(map);
+          new L.marker([
+            value.delivery_object.location.lat,
+            value.delivery_object.location.lng
+          ])
+          .bindPopup("driver location")
+          .addTo(this.map);
 
-    // var locations = [
-    //   ["driver location", 11.8166, 122.0942],
-    //   ["package source", 11.9804, 121.9189],
-    //   ["package destination", 10.7202, 122.5621],
-    // ];
+
+
+          new L.marker([
+            this.packageItem?.from_location?.lat,
+            this.packageItem?.from_location?.lng
+          ])
+          .bindPopup("source location")
+          .addTo(this.map);
+
+          new L.marker([
+            this.packageItem?.to_location?.lat,
+            this.packageItem?.to_location?.lng,
+          ])
+          .bindPopup("destination location")
+          .addTo(this.map);
+
+          console.log(value.delivery_object);
+        }
+      })
   }
 }

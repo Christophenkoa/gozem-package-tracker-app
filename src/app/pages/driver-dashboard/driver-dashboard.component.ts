@@ -13,8 +13,10 @@ import { SocketService } from 'src/app/services/socket/socket.service';
 export class DriverDashboardComponent {
   delivery!: Delivery;
   package!: Package;
+
   deliveryId: string = '';
   deliveryPackageId: string = '';
+
   latitude!: number;
   longitude!: number;
 
@@ -61,82 +63,92 @@ export class DriverDashboardComponent {
     if(!navigator.geolocation) {
       console.log('location is not supported.')
     } else {
-      this.watchPosition();
-      // this.watchPosition2()
+      // this.watchPosition();
+      // this.getDeliveryUpdate()
+      this.watchPosition2()
     }
   }
 
-  // watchPosition2() {
-  //   //emit value in sequence every 2 second
-  //   const source = interval(2000);
-  //   this.subscription = source.subscribe(() => {
-  //     console.log('hello')
-  //     navigator.geolocation.getCurrentPosition((position) => {
-  //       this.latitude = position.coords.latitude;
-  //       this.longitude = position.coords.longitude;
+  watchPosition2() {
+    //emit value in sequence every 2 second
+    const source = interval(2000);
+    this.subscription = source.subscribe(() => {
+      console.log('hello')
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
 
-  //       console.log(position)
+        console.log(position)
 
-  //       if(this.delivery) {
-  //         console.log(this.delivery.status)
+        if(this.delivery) {
+          console.log(this.delivery.status)
 
-  //         if(this.delivery.status === DeliveryStatus.failed
-  //           || this.delivery.status === DeliveryStatus.delivered) {
-  //             this.subscription.unsubscribe();
-  //         }
+          if(this.delivery.status === DeliveryStatus.failed
+            || this.delivery.status === DeliveryStatus.delivered) {
+              this.subscription.unsubscribe();
+          }
 
-  //         this.socketService.emitToServer(Connection.location_changed, {
-  //           event: Connection.location_changed,
-  //           delivery_id: this.delivery._id,
-  //           location: {
-  //             lat: this.latitude,
-  //             lng: this.longitude
-  //           }
-  //         });
-  //       }
-  //     })
-  //   });
-  // }
-
-  watchPosition() {
-    let id = navigator.geolocation.watchPosition((position) => {
-
-    this.latitude = position.coords.latitude;
-    this.longitude = position.coords.longitude;
-
-    console.log(position);
-
-    if(this.delivery) {
-      console.log(this.delivery.status)
-
-      if(this.delivery.status === DeliveryStatus.failed
-        || this.delivery.status === DeliveryStatus.delivered) {
-          navigator.geolocation.clearWatch(id);
-      }
-
-      this.socketService.emitToServer(Connection.location_changed, {
-        event: Connection.location_changed,
-        delivery_id: this.delivery._id,
-        location: {
-          lat: this.latitude,
-          lng: this.longitude
+          this.socketService.emitToServer(Connection.location_changed, {
+            event: Connection.location_changed,
+            delivery_id: this.delivery._id,
+            location: {
+              lat: this.latitude,
+              lng: this.longitude
+            }
+          });
         }
-      });
-    }
-
-    },(error) => {
-      console.log(error)
-    },
-    {
-      enableHighAccuracy: false,
-      timeout: 2000,
-      maximumAge: 0
+      })
     });
   }
+
+  // getDeliveryUpdate() {
+  //   this.socketService.listenToServer(Connection.delivery_updated)
+  //     .subscribe({
+  //       next: (value) => {
+  //         console.log(value);
+  //       }
+  //     })
+  // }
+
+  // watchPosition() {
+  //   let id = navigator.geolocation.watchPosition((position) => {
+
+  //   this.latitude = position.coords.latitude;
+  //   this.longitude = position.coords.longitude;
+
+  //   console.log(position);
+
+  //   if(this.delivery) {
+  //     console.log(this.delivery.status)
+
+  //     if(this.delivery.status === DeliveryStatus.failed
+  //       || this.delivery.status === DeliveryStatus.delivered) {
+  //         navigator.geolocation.clearWatch(id);
+  //     }
+
+  //     this.socketService.emitToServer(Connection.location_changed, {
+  //       event: Connection.location_changed,
+  //       delivery_id: this.delivery._id,
+  //       location: {
+  //         lat: this.latitude,
+  //         lng: this.longitude
+  //       }
+  //     });
+  //   }
+
+  //   },(error) => {
+  //     console.log(error)
+  //   },
+  //   {
+  //     enableHighAccuracy: false,
+  //     timeout: 2000,
+  //     maximumAge: 0
+  //   });
+  // }
 
   ngOnDestroy(): void {
     this.packageSubscription.unsubscribe();
     this.deliverySubscription.unsubscribe();
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }
