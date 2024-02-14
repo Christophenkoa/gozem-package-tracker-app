@@ -40,18 +40,4 @@ export class CustomMapComponent implements OnInit {
     //   ["package destination", 10.7202, 122.5621],
     // ];
   }
-
-  watchPosition() {
-    // You can clear avigator.geolocation.clearWatch(id);
-    let id = navigator.geolocation.watchPosition((position) => {
-
-    },(error) => {
-      console.log(error)
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    });
-  }
 }

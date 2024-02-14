@@ -17,6 +17,7 @@ import { PackageItemComponent } from './components/package-item/package-item.com
 import { DeliveryItemComponent } from './components/delivery-item/delivery-item.component';
 import { DeliverySearchComponent } from './components/delivery-search/delivery-search.component';
 import { CustomMapComponent } from './components/custom-map/custom-map.component';
+import { SocketService } from './services/socket/socket.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { CustomMapComponent } from './components/custom-map/custom-map.component
     FormsModule,
     NgbModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

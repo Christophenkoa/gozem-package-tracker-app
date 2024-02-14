@@ -12,7 +12,6 @@ export class DeliveryItemComponent implements OnInit{
   formatToDate(dateString: string) {
     const formatDateTime =
     `${new Date(dateString).toDateString()}: ${new Date(dateString).toLocaleTimeString()}`
-    console.log(formatDateTime)
     return formatDateTime
   }
 

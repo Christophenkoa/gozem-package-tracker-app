@@ -5,6 +5,7 @@ import Role from "./Role";
 import Location from "./Location";
 import { roleType } from "./roleType";
 import { DeliveryStatus } from "./DeliveryStatus";
+import { Connection } from "./Connection";
 
 export {
   LoginData,
@@ -13,5 +14,6 @@ export {
   Role,
   Package,
   Location,
-  DeliveryStatus
+  DeliveryStatus,
+  Connection
 }

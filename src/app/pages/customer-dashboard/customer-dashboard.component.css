@@ -1,13 +1,4 @@
-.mapSection {
-  flex: 1;
-  border: 1px solid #000;
-  background-color: #cfe2f3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100px;
-  margin-right: 20px;
-}
+
 
 #map {
   height: 60vh;
