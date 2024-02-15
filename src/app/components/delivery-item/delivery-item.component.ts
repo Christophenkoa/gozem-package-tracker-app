@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Delivery } from 'src/app/interfaces';
+import { Connection, Delivery } from 'src/app/interfaces';
+import { SocketService } from 'src/app/services/socket/socket.service';
 
 @Component({
   selector: 'app-delivery-item',
@@ -8,6 +9,8 @@ import { Delivery } from 'src/app/interfaces';
 })
 export class DeliveryItemComponent implements OnInit{
   @Input() deliveryItem!: Delivery;
+
+  constructor(private socketService: SocketService) {}
 
   formatToDate(dateString?: string) {
     if(!dateString) {
@@ -19,5 +22,18 @@ export class DeliveryItemComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.listenStatusUpdate();
+  }
+
+  listenStatusUpdate() {
+    this.socketService.listenToServer(Connection.delivery_updated)
+      .subscribe({
+        next: (data: {event: string, delivery_object: Delivery}) => {
+          if(data.delivery_object._id == this.deliveryItem._id &&
+            data.delivery_object.status != this.deliveryItem.status) {
+            this.deliveryItem.status = data.delivery_object.status;
+          }
+        }
+      })
   }
 }

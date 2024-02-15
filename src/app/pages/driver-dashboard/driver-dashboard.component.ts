@@ -77,7 +77,7 @@ export class DriverDashboardComponent {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
 
-        console.log(position)
+        // console.log(position)
 
         if(this.delivery) {
 
