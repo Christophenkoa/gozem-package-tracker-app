@@ -26,17 +26,19 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.password
     ).subscribe({
       next: (data) => {
-        console.log(data)
         const role = data.user.role.name;
 
+        localStorage.setItem('JWT_TOKEN', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
         if(role === roleType.admin) {
-          this.router.navigateByUrl('/admin-dashboard')
+          this.router.navigateByUrl('/admin/dashboard')
 
         }else if(role === roleType.driver) {
-          this.router.navigateByUrl('/driver-dashboard')
+          this.router.navigateByUrl('/driver/dashboard')
 
         }else if(role === roleType.customer) {
-          this.router.navigateByUrl('/customer-dashboard')
+          this.router.navigateByUrl('/customer/dashboard')
 
         }else {
           console.log("user with unknown role.")
