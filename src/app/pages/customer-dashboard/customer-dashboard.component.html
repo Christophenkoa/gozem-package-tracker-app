@@ -1,8 +1,10 @@
-<form>
-  <app-item-search-bar
-   (onBtnSearch)="getPackageId($event)"
-   [placeholder]="placeholder"
-   ></app-item-search-bar>
+<div class="globalDiv">
+  <div class="m-2">
+    <app-item-search-bar
+      (onBtnSearch)="getPackageId($event)"
+      [placeholder]="placeholder"
+    ></app-item-search-bar>
+  </div>
   <div class="flexContainer">
     <div class="deliveryDetailsSection">
 
@@ -29,4 +31,4 @@
       </ng-container>
     </div>
   </div>
-</form>
+</div>

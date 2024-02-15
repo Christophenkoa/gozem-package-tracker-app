@@ -1,8 +1,12 @@
-<form>
-  <app-item-search-bar
-   (onBtnSearch)="getDeliveryId($event)"
-   [placeholder]="placeholder"
-   ></app-item-search-bar>
+
+<div class="globalDiv">
+  <div class="m-2">
+    <app-item-search-bar
+      (onBtnSearch)="getDeliveryId($event)"
+      [placeholder]="placeholder"
+    ></app-item-search-bar>
+  </div>
+
   <div class="flexContainer">
     <div class="deliveryDetailsSection">
 
@@ -28,27 +32,6 @@
         <app-custom-map [packageItem]="package"></app-custom-map>
       </ng-container>
     </div>
-    <div class="statusButtonsSection">
-      <div class="mb-2 mt-2">
-        <app-custom-button [color]="'blue'" [text]="'picked up'">
-        </app-custom-button>
-      </div>
-      <div class="mb-2 mt-2">
-        <app-custom-button [color]="'brown'" [text]="'In-Transit'">
-        </app-custom-button>
-      </div>
-      <div class="mb-2 mt-2">
-        <app-custom-button [color]="'green'" [text]="'Delivered'">
-        </app-custom-button>
-      </div>
-      <div class="mb-2 mt-2">
-        <app-custom-button [color]="'red'" [text]="'Failed'">
-        </app-custom-button>
-      </div>
-      <!-- <button class="pickedUpBtn">picked up</button>
-      <button class="inTransitBtn">In-Transit</button
-      ><button class="deliveredBtn">Delivered</button
-      ><button class="failedBtn">Failed</button> -->
-    </div>
+    <app-driver-action-bar></app-driver-action-bar>
   </div>
-</form>
+</div>

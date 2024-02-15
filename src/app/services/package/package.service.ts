@@ -21,7 +21,7 @@ export class PackageService {
     );
   }
 
-  createDelivery(data: Package) {
+  createPackage(data: Package) {
     return this.httpPackageService.postWithHeader(data, 'package');
   }
 }

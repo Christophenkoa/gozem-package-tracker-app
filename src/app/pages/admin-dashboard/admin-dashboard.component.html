@@ -1,23 +1,38 @@
-<div>
-  <div>
-    <div>
-      Package List
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <div style="font-weight: bold; margin: 5px;">
+          Package List
+        </div>
+        <div *ngIf="packages.length != 0">
+          <p *ngFor="let package of packages">
+            <app-package-item [packageItem]="package"></app-package-item>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight: bold; margin: 5px;">
+          Delivery List
+        </div>
+        <div *ngIf="deliveries.length != 0">
+          <p *ngFor="let delivery of deliveries">
+            <app-delivery-item [deliveryItem]="delivery"></app-delivery-item>
+          </p>
+        </div>
+      </div>
     </div>
-    <div *ngIf="packages.length != 0">
-      <p *ngFor="let package of packages">
-        <app-package-item [packageItem]="package"></app-package-item>
-      </p>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      Delivery List
-    </div>
-    <div *ngIf="deliveries.length != 0">
-      <p *ngFor="let delivery of deliveries">
-        <app-delivery-item [deliveryItem]="delivery"></app-delivery-item>
-      </p>
+    <div class="col d-flex justify-content-center align-items-center">
+      <div class="m-2">
+        <app-custom-button [color]="'green'" [text]="'Create Package'"
+        (btnClick)="goToCreatePackage()">
+        </app-custom-button>
+      </div>
+      <div class="m-2">
+        <app-custom-button [color]="'green'" [text]="'Create Delivery'"
+        (btnClick)="goToCreateDelivery()">
+        </app-custom-button>
+      </div>
     </div>
   </div>
 </div>

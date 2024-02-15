@@ -1,0 +1,153 @@
+<section class="">
+  <div class="container p-0">
+    <div class="row no-gutters height-self-center">
+      <div class="col-sm-12 align-self-center">
+        <div class="row m-0 justify-content-center">
+          <div class="col-md-6 col-12 bg-white">
+            <div class="mt-5">
+              <form class="mt-4">
+                <div class="form-group mb-2">
+                  <input
+                        name="weight"
+                        id="weight"
+                        type="number"
+                        class="form-control"
+                        placeholder="Enter Weight"
+                        required
+                        [(ngModel)]="weight">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="width"
+                        name="width"
+                        type="number"
+                        required
+                        placeholder="Enter Width"
+                        [(ngModel)]="width">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="height"
+                        name="height"
+                        type="number"
+                        required
+                        placeholder="Enter Height"
+                        [(ngModel)]="height">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="depth"
+                        name="depth"
+                        type="number"
+                        required
+                        placeholder="Enter Depth"
+                        [(ngModel)]="depth">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="from_name"
+                        name="from_name"
+                        type="text"
+                        required
+                        placeholder="Enter Sender Name"
+                        [(ngModel)]="from_name">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="to_name"
+                        name="to_name"
+                        type="text"
+                        required
+                        placeholder="Enter Receiver Name"
+                        [(ngModel)]="to_name">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="from_address"
+                        name="from_address"
+                        type="text"
+                        required
+                        placeholder="Enter Sender Address"
+                        [(ngModel)]="from_address">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="to_address"
+                        name="to_address"
+                        type="text"
+                        required
+                        placeholder="Enter Receiver Address"
+                        [(ngModel)]="to_address">
+                </div>
+                <div class="form-group mb-2">
+                  <input
+                        class="form-control mb-0"
+                        id="description"
+                        name="description"
+                        type="text"
+                        required
+                        placeholder="Enter Description"
+                        [(ngModel)]="description">
+                </div>
+                <div class="form-row mb-2">
+                  <div class="col">
+                    <input
+                        class="form-control mb-0"
+                        id="from_location_lat"
+                        name="from_location_lat"
+                        type="number"
+                        required
+                        placeholder="Enter Sender Location Lat"
+                        [(ngModel)]="from_location_lat">
+                  </div>
+                  <div class="col">
+                    <input
+                        class="form-control mb-0"
+                        id="from_location_lng"
+                        name="from_location_lng"
+                        type="number"
+                        required
+                        placeholder="Enter Sender Location Lng"
+                        [(ngModel)]="from_location_lng">
+                  </div>
+                </div>
+
+                <div class="form-group mb-2">
+                  <input
+                      class="form-control mb-0"
+                      id="to_location_lat"
+                      name="to_location_lat"
+                      type="number"
+                      required
+                      placeholder="Enter Reciever Location Lat"
+                      [(ngModel)]="to_location_lat">
+                  <input
+                      class="form-control mb-0"
+                      id="to_location_lng"
+                      name="to_location_lng"
+                      type="number"
+                      required
+                      placeholder="Enter Reciever Location Lng"
+                      [(ngModel)]="to_location_lng">
+                </div>
+                <div class="mt-2">
+                  <button type="submit" class="btn btn-primary d-block w-100 mb-2 p-3"
+                  (click)="createPackage()">
+                    Create Package
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

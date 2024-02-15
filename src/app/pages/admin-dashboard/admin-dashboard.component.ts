@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Delivery, Package } from 'src/app/interfaces';
 import { DeliveryService } from 'src/app/services/delivery/delivery.service';
@@ -18,7 +19,8 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   deliveries: Delivery[] = [];
 
   constructor(private deliveryService: DeliveryService,
-    private packageService: PackageService) {}
+    private packageService: PackageService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.getAllPackages();
@@ -43,6 +45,14 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
           this.deliveries = allDeliveryData.data;
         }
       })
+  }
+
+  goToCreateDelivery() {
+    this.router.navigateByUrl('/admin/add-package');
+  }
+
+  goToCreatePackage() {
+    this.router.navigateByUrl('admin/add-delivery');
   }
 
   ngOnDestroy(): void {

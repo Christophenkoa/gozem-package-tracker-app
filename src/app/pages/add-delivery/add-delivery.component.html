@@ -1,0 +1,39 @@
+<section class="">
+  <div class="container p-0">
+    <div class="row no-gutters height-self-center">
+      <div class="col-sm-12 align-self-center">
+        <div class="row m-0 justify-content-center">
+          <div class="col-md-6 col-12 bg-white">
+            <div class="mt-5">
+              <form class="mt-4">
+                <div class="form-group mb-2">
+                  <label for="package_id" style="color:#004481">Select package</label>
+                  <select *ngIf="packages.length != 0"
+                    class="form-select"
+                    aria-label="Default select example"
+                    id="package_id"
+                    name="package_id"
+                    [(ngModel)]="package_id">
+                    <option
+                      *ngFor="let package of packages"
+                      value="{{ package._id }}"
+                      selected>
+                      {{ package._id }}
+                    </option>
+                  </select>
+                </div>
+                <div class="mt-2">
+                  <button type="submit"
+                   class="btn btn-primary d-block w-100 mb-2 p-3"
+                   (click)="createDelivery()">
+                    Create Delivery
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

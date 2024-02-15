@@ -9,7 +9,10 @@ import { Delivery } from 'src/app/interfaces';
 export class DeliveryItemComponent implements OnInit{
   @Input() deliveryItem!: Delivery;
 
-  formatToDate(dateString: string) {
+  formatToDate(dateString?: string) {
+    if(!dateString) {
+      return '';
+    }
     const formatDateTime =
     `${new Date(dateString).toDateString()}: ${new Date(dateString).toLocaleTimeString()}`
     return formatDateTime

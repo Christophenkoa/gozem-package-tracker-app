@@ -18,6 +18,9 @@ import { DeliveryItemComponent } from './components/delivery-item/delivery-item.
 import { CustomMapComponent } from './components/custom-map/custom-map.component';
 import { SocketService } from './services/socket/socket.service';
 import { ItemSearchBarComponent } from './components/item-search-bar/item-search-bar.component';
+import { AddPackageComponent } from './pages/add-package/add-package.component';
+import { AddDeliveryComponent } from './pages/add-delivery/add-delivery.component';
+import { DriverActionBarComponent } from './components/driver-action-bar/driver-action-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { ItemSearchBarComponent } from './components/item-search-bar/item-search
     PackageItemComponent,
     DeliveryItemComponent,
     CustomMapComponent,
-    ItemSearchBarComponent
+    ItemSearchBarComponent,
+    AddPackageComponent,
+    AddDeliveryComponent,
+    DriverActionBarComponent
   ],
   imports: [
     BrowserModule,
