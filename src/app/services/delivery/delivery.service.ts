@@ -16,8 +16,12 @@ export class DeliveryService {
   }
 
   getDeliveries() {
-    return this.httpDeliveryService.get(
+    return this.httpDeliveryService.getAll(
       'delivery',
     );
+  }
+
+  createDelivery(data: Delivery) {
+    return this.httpDeliveryService.postWithHeader(data, 'delivery');
   }
 }

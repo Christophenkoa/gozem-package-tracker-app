@@ -8,6 +8,10 @@
     placeholder= {{placeholder}}
     [(ngModel)]="itemId"
   />
-  <button class="submitBtn" (click)="onSearch()">Submit</button>
+  <!-- <button class="submitBtn" (click)="onSearch()">Submit</button> -->
+  <div style="margin-left: 10px;">
+    <app-custom-button [color]="'blue'" [text]="'Submit'" (btnClick)="onSearch()">
+    </app-custom-button>
+  </div>
   <div class="empty"></div>
 </div>

@@ -68,6 +68,16 @@ export class HttpService<T> {
         );
     }
 
+    getAll(suffix: string): Observable<T[]> {
+      return this.http.get<T[]>(this.envService.API_URL + suffix).pipe(
+          retry(2),
+          tap((data) => {
+            return data;
+          }),
+          catchError(this.handleError)
+      );
+    }
+
     getSub(suffix: string): Observable<T> {
         return this.http.get<T>(this.envService.API_URL + suffix, this.httpOptions).pipe(
             retry(2),

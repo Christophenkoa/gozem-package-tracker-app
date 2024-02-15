@@ -16,8 +16,12 @@ export class PackageService {
   }
 
   getPackages() {
-    return this.httpPackageService.get(
+    return this.httpPackageService.getAll(
       'package'
     );
+  }
+
+  createDelivery(data: Package) {
+    return this.httpPackageService.postWithHeader(data, 'package');
   }
 }

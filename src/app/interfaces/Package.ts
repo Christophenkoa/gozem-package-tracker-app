@@ -1,6 +1,6 @@
 import Location from './Location'
 
-export default interface PackageType {
+export default interface Package {
     _id?: string
     active_delivery_id?: string
     description?: string

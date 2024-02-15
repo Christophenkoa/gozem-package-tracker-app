@@ -1,1 +1,23 @@
-<p>admin-dashboard works!</p>
+<div>
+  <div>
+    <div>
+      Package List
+    </div>
+    <div *ngIf="packages.length != 0">
+      <p *ngFor="let package of packages">
+        <app-package-item [packageItem]="package"></app-package-item>
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <div>
+      Delivery List
+    </div>
+    <div *ngIf="deliveries.length != 0">
+      <p *ngFor="let delivery of deliveries">
+        <app-delivery-item [deliveryItem]="delivery"></app-delivery-item>
+      </p>
+    </div>
+  </div>
+</div>
