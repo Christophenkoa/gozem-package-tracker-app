@@ -64,7 +64,6 @@ export class DriverDashboardComponent {
       console.log('location is not supported.')
     } else {
       // this.watchPosition();
-      // this.getDeliveryUpdate()
       this.watchPosition2()
     }
   }
@@ -76,8 +75,6 @@ export class DriverDashboardComponent {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-
-        // console.log(position)
 
         if(this.delivery) {
 
@@ -104,15 +101,6 @@ export class DriverDashboardComponent {
       });
     });
   }
-
-  // getDeliveryUpdate() {
-  //   this.socketService.listenToServer(Connection.delivery_updated)
-  //     .subscribe({
-  //       next: (value) => {
-  //         console.log(value);
-  //       }
-  //     })
-  // }
 
   // watchPosition() {
   //   let id = navigator.geolocation.watchPosition((position) => {

@@ -31,9 +31,13 @@ export class DeliveryItemComponent implements OnInit{
         next: (data: {event: string, delivery_object: Delivery}) => {
           if(data.delivery_object._id == this.deliveryItem._id &&
             data.delivery_object.status != this.deliveryItem.status) {
-            this.deliveryItem.status = data.delivery_object.status;
+            this.deliveryItem = data.delivery_object;
           }
+        },
+        error: (error) => {
+          console.log(error);
         }
-      })
+      },
+    )
   }
 }

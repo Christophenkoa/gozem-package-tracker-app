@@ -49,9 +49,11 @@ export class AddPackageComponent implements OnInit {
     ).subscribe({
       next: (data) => {
         console.log(data);
+        alert('package added successfully');
       },
       error: (error) => {
-        console.log(error)
+        console.log(error);
+        alert('an error occured while adding a new package');
       }
     });
   }

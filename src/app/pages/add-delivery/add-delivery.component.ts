@@ -47,9 +47,11 @@ export class AddDeliveryComponent {
     ).subscribe({
       next: (data) => {
         console.log(data);
+        alert('delivery added successfully');
       },
       error: (error) => {
-        console.log(error)
+        console.log(error);
+        alert('An error occurs while adding a new delivery');
       }
     });
   }
