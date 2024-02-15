@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
 
-## NB: Backend
+# NB: Backend
 
-Before running this project make sure to follow all the intructions and run the backend: [Backand project](https://github.com/Christophenkoa/gozem-package-tracker)
+Before running this project make sure to follow all the intructions and run the backend: [Backend project](https://github.com/Christophenkoa/gozem-package-tracker)
 
 ## Development server
 
