@@ -48,11 +48,11 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   }
 
   goToCreateDelivery() {
-    this.router.navigateByUrl('/admin/add-package');
+    this.router.navigateByUrl('/admin/add-delivery');
   }
 
   goToCreatePackage() {
-    this.router.navigateByUrl('admin/add-delivery');
+    this.router.navigateByUrl('admin/add-package');
   }
 
   ngOnDestroy(): void {
