@@ -13,7 +13,7 @@ export class DriverGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authService.isUserRole(roleType.admin)) {
+    if (this.authService.isUserRole(roleType.driver)) {
       return true;
     }
     this.router.navigate(['/login']);
